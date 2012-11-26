@@ -1,0 +1,54 @@
+{% extends 'dreammessaging/message_send_base.html' %}
+{% load i18n %}
+
+{% block content %}
+<form method="post" action="">
+  {% csrf_token %}
+
+  <div id="header">
+    <div class="wrap">
+      <div class="icon"></div>
+      <h1 class="title">{% trans "Send to" %}</h1>
+    </div>
+    <a class="back-link" href="{% url dreammessaging.mine %}"><span></span></a>
+  </div>
+
+  <div id="content">
+
+    <div class="radio-list-description">{% trans "Choose the recipient and click next." %}</div>
+
+    {% if form.errors %}
+    <div class="radio-list-errors">{% trans "Choose at least one" %}</div>
+    {% endif %}
+
+    <div class="radio-list">
+    {% for field in form %}
+    {% for radio in field %}
+      <div class="radio-list-item">
+        <label for="{{ field.auto_id }}_{{ radio.index }}">
+          <span class="label-content">{{ radio.choice_label }}</span>
+          <span class="label-icon"></span>
+        </label>
+        <input type="radio" id="{{ field.auto_id }}_{{ radio.index }}" value="{{ radio.choice_value }}" name="{{ field.html_name }}" />
+      </div>
+    {% endfor %}
+    {% endfor %}
+    </div>
+
+  </div>
+
+  <div id="footer">
+    <div class="footer-container clearfix">
+
+      <input type="submit" value="{% trans 'Next' %}" class="button-1" />
+
+      <div class="copyright">
+        <p class="row">{% trans '#copyright' %}</p>
+        <p class="row">{% trans 'Made by Haltu Oy' %}</p>
+      </div>
+
+    </div>
+  </div>
+
+</form>
+{% endblock %}

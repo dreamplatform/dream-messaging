@@ -1,0 +1,52 @@
+{% extends 'dreammessaging/message_send_base.html' %}
+{% load i18n %}
+
+{% block content %}
+  <div id="header">
+    <div class="wrap">
+      <div class="icon"></div>
+      <h1 class="title">{% trans "Message sent" %}</h1>
+    </div>
+    <a class="back-link" href="{% url dreammessaging.to %}"><span></span></a>
+  </div>
+
+  <div id="content">
+    <div class="raw-form">
+
+      <h1 style="text-align:center;padding:2em;">{% trans "Message sent" %}</h1>
+
+    </div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-container clearfix">
+
+      <a class="button-1" onclick="tryCloseColorbox();">{% trans "Close" %}</a>
+
+      <div class="copyright">
+        <p class="row">{% trans '#copyright' %}</p>
+        <p class="row">{% trans 'Made by Haltu Oy' %}</p>
+      </div>
+      
+    </div>
+  </div>
+
+<script>
+  if(window.parent != window) { try { window.parent.cboxForceReload(); } catch(e) {} }
+
+  function tryCloseColorbox() {
+    if(window.parent == window) {
+      window.open('', '_self', '');
+      window.close();
+    } else {
+      try {
+        window.parent.jQuery.colorbox.close();
+      } catch(e) {}
+      try {
+        window.parent.dream.jQuery.colorboxDream.close();
+      } catch(e) {}
+    }
+    return false;
+  }
+</script>
+{% endblock %}

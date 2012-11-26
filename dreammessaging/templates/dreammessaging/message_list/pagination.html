@@ -1,0 +1,32 @@
+{% load i18n %}
+<div class="pagination clearfix">
+  <div class="step-links">
+
+    {% if page_obj.has_previous %}
+    <a class="previous" href="?page={{ page_obj.previous_page_number }}" title="{% trans 'Previous page' %}">
+      <span class="icon"><img src="{{ STATIC_URL }}dreammessaging/img/icon-previous-page.png" alt="" /></span>
+      <span class="text">{% trans 'Previous page' %}</span>
+    </a>
+    {% else %}
+    <span class="previous disabled">
+      <span class="icon"><img src="{{ STATIC_URL }}dreammessaging/img/icon-previous-page-disabled.png" alt="" /></span>
+      <span class="text">{% trans 'Previous page' %}</span>
+    </span>
+    {% endif %}
+
+    <span class="current">{% trans 'Page' %} {{ page_obj.number }} / {{ paginator.num_pages }}</span>
+
+    {% if page_obj.has_next %}
+    <a class="next" href="?page={{ page_obj.next_page_number }}" title="{% trans 'Next page' %}">
+      <span class="text">{% trans 'Next page' %}</span>
+      <span class="icon"><img src="{{ STATIC_URL }}dreammessaging/img/icon-next-page.png" alt="" /></span>
+    </a>
+    {% else %}
+    <span class="next disabled">
+      <span class="text">{% trans 'Next page' %}</span>
+      <span class="icon"><img src="{{ STATIC_URL }}dreammessaging/img/icon-next-page-disabled.png" alt="" /></span>
+    </span>
+    {% endif %}
+
+  </div>
+</div>

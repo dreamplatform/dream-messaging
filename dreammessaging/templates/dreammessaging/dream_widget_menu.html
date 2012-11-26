@@ -1,0 +1,23 @@
+{% load i18n %}
+<div id="dw-menu">
+  <div id="dw-menu-content">
+    
+    <span class="dw-menu-button new-message js-send-new-message" data-url="{% url dreammessaging.to %}">
+      <span class="dw-menu-button-icon"></span>
+      <span class="dw-menu-button-tooltip">{% trans 'Send new message' %}<span></span></span>
+    </span>
+
+    <a class="dw-menu-button message-list {{ message_list_active }}" href="{% url dreammessaging.list %}">
+      <span class="dw-menu-button-icon"></span>
+      <span class="dw-menu-button-tooltip">{% trans 'Inbox' %}<span></span></span>
+    </a>
+
+    <a class="dw-menu-button message-list-group {{ message_list_group_active }}" href="{% url dreammessaging.list_group %}">
+      <span class="dw-menu-button-icon"></span>
+      <span class="dw-menu-button-tooltip">{% trans 'Group messaging' %}<span></span></span>
+    </a>
+
+    <!--<div id="footer-vertical"><p>{% trans '#copyright' %}</p></div>-->
+
+  </div><!-- /#dw-menu-content -->
+</div><!-- /#dw-menu -->

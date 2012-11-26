@@ -1,0 +1,219 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<style type="text/css">
+
+/* Reset */
+
+html, body, div, span, applet, object, iframe,
+h2, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* Base */
+
+html {
+  background: #fff;
+}
+body, input {
+  font-family: 'Gill Sans', Helmet, Freesans, sans-serif;
+  font-size: 14px;
+  line-height: 25px;
+  color: #444;
+}
+#container {
+  position: relative;
+  min-width: 260px;
+  max-width: 460px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header */
+
+h1 {
+  margin: 0 0 25px 0;
+  line-height: 1.2em;
+}
+
+/* Messages */
+
+.message {
+  margin: 0 0 10px 0;
+  padding: 5px 10px;
+  border: 1px solid #000;
+  background: #fff;
+  color: #333;
+  font-size: 13px;
+  border-radius: 3px;
+  -moz-border-radius: 3px; 
+  -webkit-border-radius: 3px;
+}
+.message.success {
+  border-color: #BAC398;
+  background: #DFE9B7;
+}
+.message.error {
+  border-color: #CDBFBE;
+  background: #F5DCD8;
+}
+.message.help {
+  border-color: #D8D4B7;
+  background: #F8F2B6;
+}
+
+/* Accounts */
+
+.account-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.account-list li {
+  margin: 0 0 5px 0;
+  padding: 5px 10px;
+  color: #777;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+  font-size: 13px;
+  line-height: 1.5em;
+  border-radius: 3px;
+  -moz-border-radius: 3px; 
+  -webkit-border-radius: 3px;
+}
+
+/* Form */
+
+form {}
+form table {
+  border: 0;
+}
+form td {
+  border: 0;
+  vertical-align: middle;
+}
+form .field td {
+  padding-bottom: 10px;
+}
+form td.fluid {
+  width: 99%;
+}
+label {
+  display: block;
+  margin-right: 30px;
+  cursor: pointer;
+}
+.field input {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  margin: 0;
+  border: 1px solid #ccc;
+  background: #f0efef;
+  font-size: 14px;
+  line-height: 20px;
+  border-radius: 3px;
+  -moz-border-radius: 3px; 
+  -webkit-border-radius: 3px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.field input:focus {
+  border-color: #bbb;
+  background: #ddd;
+}
+.button {
+  display: block;
+  float: left;
+  padding: 4px 15px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  white-space: nowrap;
+  text-decoration: none;
+  border: 1px solid #ccc;
+  background: #555654;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 3px;
+  -moz-border-radius: 3px; 
+  -webkit-border-radius: 3px;
+}
+.button:hover {
+  background: #777;
+}
+.button:focus, .button:active  {
+  background: #333;
+}
+</style>
+</head>
+<body>
+  <div id="container">
+
+    <h1>{% trans "Dream Messaging accounts" %}</h1>
+
+    {% if xmpp_accounts %}
+
+      <ul class="account-list">
+      {% for account in xmpp_accounts %}
+        <li>{{ account }}</li>
+      {% endfor %}
+      </ul>
+
+    {% else %}
+
+      <div class="message help">{% trans "You don't have a Dream Messaging account yet." %}<br />{% trans "Please create one with the form below." %}</div>
+
+    {% endif %}
+
+    {% if new_account_form %}
+
+    <form method="POST">
+      {% csrf_token %}
+      {% for field in new_account_form %}
+        {% if field.errors %}
+        {% for error in field.errors %}
+        <div class="message error">{{ error }}</div>
+        {% endfor %}
+        {% endif %}
+      {% endfor %}
+      <table>
+        <tbody>
+          {% for field in new_account_form %}
+          <tr class="field">
+            <td><label for="id_{{ field.html_name }}">{{ field.label }}</label></td>
+            <td class="fluid">{{ field }}</td>
+          </tr>
+          {% endfor %}
+          <tr class="actions">
+            <td></td>
+            <td class="fluid clearfix"><input type="submit" class="button" value="{% trans 'Create' %}" /></td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+
+    {% endif %}
+
+  </div><!-- /#container -->
+</body>
+</html>

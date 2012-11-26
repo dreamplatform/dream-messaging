@@ -1,0 +1,82 @@
+/*
+    ColorBox Core Style:
+    The following CSS is consistent between example themes and should not be altered.
+*/
+
+#colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:99999; /*overflow:hidden;*/}
+#cboxOverlay{position:fixed; width:100%; height:100%;}
+#cboxMiddleLeft, #cboxBottomLeft{clear:left;}
+#cboxContent{position:relative;}
+#cboxLoadedContent{overflow:auto;}
+#cboxTitle{margin:0;}
+#cboxLoadingOverlay, #cboxLoadingGraphic{position:absolute; top:0; left:0; width:100%; height:100%;}
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow{cursor:pointer;}
+.cboxPhoto{float:left; margin:auto; border:0; display:block; max-width:none;}
+.cboxIframe{width:100%; height:100%; display:block; border:0;}
+#colorbox, #cboxContent, #cboxLoadedContent{box-sizing:content-box;}
+
+/* 
+    User Style:
+    Change the following styles to modify the appearance of ColorBox.  They are
+    ordered & tabbed in a way that represents the nesting of the generated HTML.
+*/
+
+#cboxOverlay{
+  background:#000;
+}
+#cboxLoadedContent {
+  background: #fff;
+  -webkit-box-shadow: 0 0 0 7px rgba(255,255,255,0.3);
+  box-shadow: 0 0 0 7px rgba(255,255,255,0.3);
+}
+#cboxLoadedContent:after {
+  content: '';
+  position: absolute;
+  top: -122px;
+  right: 50px;
+  width: 154px;
+  height: 144px;
+  background: url(/static/dreammessaging/img/dialog-props.png) no-repeat;
+  pointer-events: none;
+  /*
+  background: url(img/dialog-props-highres.png) no-repeat;
+  background-size: 100%;
+  */
+}
+@media only screen and (max-height: 700px) {
+  #cboxLoadedContent:after {
+    display: none;
+  }
+}
+#cboxLoadedContent iframe {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+#cboxError { 
+  padding: 20px 50px;
+}
+#cboxLoadingOverlay {
+  background: #fff;
+}
+#cboxLoadingGraphic {
+  background:url(/static/dreammessaging/img/dialog-loading.gif) no-repeat center center;
+}
+#cboxClose {
+  display: none;
+  position: absolute;
+  top: -22px;
+  right: -22px;
+  background: transparent url(/static/dreammessaging/img/dialog-close.png) no-repeat left top;
+  width: 34px;
+  height: 40px;
+  text-indent: -9999px;
+  cursor: pointer;
+}
+#cboxClose:hover {
+  background-position: left bottom;
+}
+#cboxTitle, #cboxCurrent, #cboxSlideshow, #cboxPrevious, #cboxNext {
+  display: none;
+}

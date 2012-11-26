@@ -1,0 +1,733 @@
+
+/* Base typography & colors
+======================================================== */
+
+html {
+  background: #fff;
+}
+body, input, textarea, select, button {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #063145;
+}
+
+/* Headings
+-------------------------------------------------------- */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: inherit;
+  font-size: 18px;
+  line-height: 1.2em;
+  font-weight: bold;
+}
+.mod-fontface h1, .mod-fontface h2, .mod-fontface h3, .mod-fontface h4, .mod-fontface h5, .mod-fontface h6 {
+  font-weight: 600;
+}
+
+/* Links
+-------------------------------------------------------- */
+
+a { 
+  color: #3b8dc0;
+  text-decoration: none;
+}
+a:hover {
+  color: #3b8dc0;
+  text-decoration: underline;
+}
+
+/* Placeholders
+-------------------------------------------------------- */
+
+::-webkit-input-placeholder {
+    color: #B0B0B0 !important;
+    font-style: italic !important;
+}
+:-moz-placeholder {
+    color: #B0B0B0 !important;
+    font-style: italic !important;
+}
+
+/* Misc
+-------------------------------------------------------- */
+
+b, strong {
+  font-weight: bold;
+}
+.mod-fontface b, .mod-fontface strong {
+  font-weight: 600;
+}
+i, em {
+  font-style: italic;
+}
+small {
+  font-size: 85%;
+}
+ins {
+  text-decoration: none;
+}
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+
+/* Layout & Elements
+======================================================== */
+
+/*========================================================
+  Main page
+========================================================*/
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+#page {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+}
+#page > form {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/*========================================================
+  Header
+========================================================*/
+
+#header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: auto;
+}
+#header .wrap {
+  position: relative;
+  height: 30px;
+  padding: 10px;
+  margin-right: 50px;
+  background: #063145;
+}
+#header .icon {
+  position: absolute;
+  display: block;
+  left: 10px;
+  top: 50%;
+  margin-top: -15px;
+  width: 30px;
+  height: 30px;
+  background: transparent url(/static/dreammessaging/img/icon-messaging.png) no-repeat center center;
+}
+#header .title {
+  height: 30px;
+  line-height: 30px;
+  padding-left: 40px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #53AADF;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: italic;
+}
+.mod-fontface #header .title {
+  font-weight: 600;
+}
+#header .back-link {
+  display: block;
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  margin-top: -25px;
+  width: 49px;
+  height: 50px;
+  border-left: 1px solid #051b24;
+  background-color: #063145;
+  background-image: url(/static/dreammessaging/img/icon-back.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+#header .back-link span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-left: 1px solid #15445b;
+}
+#header .back-link:hover {
+  background-color: #084460;
+}
+#header .back-link:hover span {
+  border-color: #0b597d;
+}
+
+/* No back button mods */
+
+#header.no-back .wrap {
+  margin: 0;
+}
+
+/*========================================================
+  Footer
+========================================================*/
+
+/* Wrappers */
+
+#footer {
+  height: 50px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: auto;
+  background: #f1f1f1;
+}
+.footer-container {
+  position: relative;
+  padding: 9px 20px;
+  height: 32px;
+}
+
+/* Copyright */
+
+.copyright {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  height: 32px;
+  margin-top: -16px;
+}
+.copyright p {
+  float: right;
+  height: 32px;
+  line-height: 32px;
+  font-size: 11px;
+  color: #999;
+  text-align: right;
+  clear: right;
+}
+.copyright p.row {
+  height: 16px;
+  line-height: 16px;
+}
+
+/*========================================================
+  Content
+========================================================*/
+
+#content {
+  position: absolute;
+  top: 50px;
+  bottom: 50px;
+  left: 0;
+  width: 100%;
+  height: auto;
+  overflow: auto;
+}
+#content.no-footer {
+  bottom: 0px;
+}
+#content-full-message {
+  position: absolute;
+  top: 50px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  overflow: auto;
+  margin-left: 100%;
+}
+h2#recipient-name {
+  margin: 20px;
+  margin-bottom: 0;
+}
+
+/*========================================================
+  Content - Radio List
+========================================================*/
+
+/* Base styles */
+
+.radio-list {
+  padding: 20px;
+}
+.radio-list-item {
+  position: relative;
+}
+.radio-list-item input {
+  display: none;
+}
+.radio-list-item label {
+  display: block;
+  position: relative;
+  padding: 10px 10px 10px 50px;
+  border-bottom: 1px solid #d3d7d9;
+  cursor: pointer;
+}
+.radio-list-item:first-child label {
+  border-top: 1px solid #d3d7d9;
+}
+.radio-list-item .label-content {
+  display: block;
+  width: 100%;
+  height: 20px;
+  line-height: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.radio-list-item .label-icon {
+  display: none;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  margin-top: -15px;
+  background-repeat: no-repeat;
+  background-image: url(/static/dreammessaging/img/icon-checkbox.png);
+}
+
+/* Hover state */
+
+.radio-list-item label:hover {
+  background-color: #e3e8eb;
+}
+.radio-list-item label:hover .label-icon {
+  display: block;
+  background-position: 0 -30px;
+}
+
+/* Selected state */
+
+.radio-list-item.selected label,
+.radio-list-item.selected label:hover {
+  background-color: #67a31e;
+}
+.radio-list-item.selected label .label-icon,
+.radio-list-item.selected label:hover .label-icon {
+  display: block;
+  background-position: 0 0px;
+}
+.radio-list-item.selected label .label-content,
+.radio-list-item.selected label:hover .label-content {
+  color: #fff;
+}
+
+/*
+Radio list form description/errors/success
+(place these element's above the radio list in markup, if you plan to use them.)
+*/
+
+.radio-list-description,
+.radio-list-errors {
+  padding: 20px 20px 0 20px;
+  font-style: italic;
+}
+.radio-list-errors {
+  color: #ff0000;
+}
+.mod-fontface .radio-list-errors {
+  font-weight: 600;
+}
+
+/*========================================================
+  Content - Basic Form
+========================================================*/
+
+.basic-form {
+  padding: 20px;
+}
+.basic-form .form-description {
+  margin: 0 0 20px 0;
+  font-style: italic;
+}
+.basic-form .field {
+  padding-bottom: 15px;
+}
+.basic-form label {
+  display: block;
+  font-weight: bold;
+  cursor: pointer;
+  padding-bottom: 2px;
+}
+.mod-fontface .basic-form label {
+  font-weight: 600;
+}
+.basic-form input[type="text"],
+.basic-form input[type="password"],
+.basic-form textarea {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  margin: 0;
+  border: 1px solid #e3e8eb;
+  background: #FFFFFF;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /* Prevent iPad from applying text-shadow */
+  -webkit-appearance: none;
+}
+.basic-form textarea {
+  overflow: auto;
+  vertical-align: top;
+  resize: none;
+}
+.basic-form input[type="text"]:focus,
+.basic-form input[type="text"]:active,
+.basic-form input[type="password"]:focus,
+.basic-form input[type="password"]:active,
+.basic-form textarea:focus,
+.basic-form textarea:active {
+  border-color: #3e8ec0;
+}
+.mod-rgba.mod-boxshadow .basic-form textarea:active,
+.mod-rgba.mod-boxshadow .basic-form textarea:focus,
+.mod-rgba.mod-boxshadow .basic-form input[type="text"]:active,
+.mod-rgba.mod-boxshadow .basic-form input[type="text"]:focus,
+.mod-rgba.mod-boxshadow .basic-form input[type="password"]:active,
+.mod-rgba.mod-boxshadow .basic-form input[type="password"]:focus {
+  -webkit-box-shadow:  0px 0px 5px 0px rgba(62, 142, 192, 0.5);
+  box-shadow:  0px 0px 5px 0px rgba(62, 142, 192, 0.5);
+}
+
+/* Disabled fields */
+
+.basic-form .field.disabled label {
+  cursor: default;
+}
+.basic-form .field.disabled input[type="text"],
+.basic-form .field.disabled input[type="password"],
+.basic-form .field.disabled textarea {
+  color: #8B9397;
+}
+.basic-form .field.disabled input[type="text"]:focus,
+.basic-form .field.disabled input[type="text"]:active,
+.basic-form .field.disabled input[type="password"]:focus,
+.basic-form .field.disabled input[type="password"]:active,
+.basic-form .field.disabled textarea:focus,
+.basic-form .field.disabled textarea:active {
+  border-color: #e3e8eb;
+}
+.mod-rgba.mod-boxshadow .basic-form .field.disabled textarea:active,
+.mod-rgba.mod-boxshadow .basic-form .field.disabled textarea:focus,
+.mod-rgba.mod-boxshadow .basic-form .field.disabled input[type="text"]:active,
+.mod-rgba.mod-boxshadow .basic-form .field.disabled input[type="text"]:focus,
+.mod-rgba.mod-boxshadow .basic-form .field.disabled input[type="password"]:active,
+.mod-rgba.mod-boxshadow .basic-form .field.disabled input[type="password"]:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+/* Field error styles */
+
+.basic-form .field.error input[type="text"],
+.basic-form .field.error input[type="text"]:focus,
+.basic-form .field.error input[type="text"]:active,
+.basic-form .field.error input[type="password"],
+.basic-form .field.error input[type="password"]:focus,
+.basic-form .field.error input[type="password"]:active,
+.basic-form .field.error textarea,
+.basic-form .field.error textarea:focus,
+.basic-form .field.error textarea:active {
+  border-color: #ff0000;
+}
+.mod-rgba.mod-boxshadow .basic-form .field.error textarea:active,
+.mod-rgba.mod-boxshadow .basic-form .field.error textarea:focus,
+.mod-rgba.mod-boxshadow .basic-form .field.error input[type="text"]:active,
+.mod-rgba.mod-boxshadow .basic-form .field.error input[type="text"]:focus,
+.mod-rgba.mod-boxshadow .basic-form .field.error input[type="password"]:active,
+.mod-rgba.mod-boxshadow .basic-form .field.error input[type="password"]:focus {
+  -webkit-box-shadow:  0px 0px 5px 0px rgba(255, 0, 0, 0.5);
+  box-shadow:  0px 0px 5px 0px rgba(255, 0, 0, 0.5);
+}
+.basic-form .field-errors {
+  display: block;
+  padding-top: 4px;
+  font-size: 13px;
+  line-height: 17px;
+  color: #ff0000;
+}
+
+/* Form error/success messages */
+
+.basic-form .form-errors,
+.basic-form .form-success {
+  margin: 0 0 20px 0;
+  font-style: italic;
+  color: #ff0000;
+}
+.mod-fontface .basic-form .form-errors,
+.mod-fontface .basic-form .form-success {
+  font-weight: 600;
+}
+.basic-form .form-errors {
+  color: #ff0000;
+}
+.basic-form .form-success {
+  color: #77BB24;
+}
+
+/*========================================================
+  Content - Buttons
+========================================================*/
+
+.button-1, .button-2, .button-3,
+a.button-1, a.button-2, a.button-3,
+input.button-1, input.button-2, input.button-3 {
+  display: block;
+  float: left;
+  width: auto;
+  padding: 7px 15px;
+  margin: 0 10px 0 0;
+  border: 0;
+  color: #FFFFFF;
+  font-size: 13px;
+  line-height: 18px;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+.button-1:hover, .button-2:hover, .button-3:hover,
+a.button-1:hover, a.button-2:hover, a.button-3:hover,
+input.button-1:hover, input.button-2:hover, input.button-3:hover {
+  text-decoration: none;
+}
+.button-1, a.button-1, input.button-1 {
+  background-color: #67a31e;
+}
+.button-1:hover, a.button-1:hover, input.button-1:hover {
+  background-color: #77bb24;
+}
+.button-1:focus, a.button-1:focus, input.button-1:focus,
+.button-1:active, a.button-1:active, input.button-1:active {
+  background-color: #558818;
+}
+.button-2, a.button-2, input.button-2 {
+  background-color: #606060;
+}
+.button-2:hover, a.button-2:hover, input.button-2:hover {
+  background-color: #808080;
+}
+.button-2:focus, a.button-2:focus, input.button-2:focus,
+.button-2:active, a.button-2:active, input.button-2:active {
+  background-color: #404040;
+}
+.button-3, a.button-3, input.button-3 {
+  background-color: #a60a0a;
+}
+.button-3:hover, a.button-3:hover, input.button-3:hover {
+  background-color: #d21010;
+}
+.button-3:focus, a.button-3:focus, input.button-3:focus,
+.button-3:active, a.button-3:active, input.button-3:active {
+  background-color: #860909;
+}
+
+/*========================================================
+  Content - My message view
+========================================================*/
+
+#messages {}
+.message {
+  position: relative;
+  padding: 10px;
+  border-top: 1px solid #e3e8eb;
+}
+.message:first-child {
+  border-top: 0;
+}
+.message .link {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.message .wrapper {
+  position: relative;
+}
+.message .type {
+  position: absolute;
+  left: 8px;
+  top: 1px;
+  width: 34px;
+  height: 34px;
+}
+.message .type img {
+  display: block;
+  max-width: 100%;
+}
+.message .sender,
+.message .recipient {
+  position: relative;
+  height: 18px;
+  line-height: 18px;
+  margin-left: 55px;
+  font-size: 13px;
+}
+.mod-fontface .message .sender,
+.mod-fontface .message .recipient {
+  font-weight: 600;
+}
+.message .sender,
+.message .recipient .text {
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
+.message .recipient .text {
+  padding-left: 16px;
+}
+.message .recipient .icon {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 11px;
+  height: 9px;
+  margin-top: -4px;
+}
+.message .recipient .icon img {
+  display: block;
+  max-width: 100%;
+}
+.message .timestamp {
+  float: right;
+  line-height: 18px;
+  font-size: 12px;
+  color: #999;
+}
+.message .content {
+  margin-top: 5px;
+  padding: 5px 7px;
+  height: 20px;
+  font-size: 14px;
+  line-height: 20px;
+}
+.message .content > div {
+  height: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.message .content p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/*========================================================
+  Content - Full message (responsive layout)
+========================================================*/
+
+#toggle-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.full-message {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.full-message .header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #e0e0e0;
+  background: #f0f0f0;
+}
+.full-message .header-container {
+  position: relative;
+  margin: 5px;
+}
+.full-message .type {
+  position: absolute;
+  left: 8px;
+  top: 3px;
+  width: 34px;
+  height: 34px;
+}
+.full-message .type img {
+  display: block;
+  max-width: 100%;
+}
+.full-message .sender,
+.full-message .recipient {
+  position: relative;
+  height: 20px;
+  line-height: 20px;
+  margin-left: 55px;
+  font-size: 13px;
+}
+.mod-fontface .full-message .sender,
+.mod-fontface .full-message .recipient {
+  font-weight: 600;
+}
+.full-message .sender,
+.full-message .recipient .text {
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
+.full-message .recipient .text {
+  padding-left: 16px;
+}
+.full-message .recipient .icon {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 11px;
+  height: 9px;
+  margin-top: -4px;
+}
+.full-message .recipient .icon img {
+  display: block;
+  max-width: 100%;
+}
+.full-message .timestamp {
+  float: right;
+  padding-right: 7px;
+  color: #999;
+  font-size: .9em;
+}
+
+.full-message .content {
+  overflow: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 51px;
+  bottom: 0;
+  padding: 20px;
+  font-size: 14px;
+  line-height: 20px;
+  background: #fff;
+}
+.full-message .content p {
+  padding-bottom: 20px;
+}
+.full-message .content-container {}

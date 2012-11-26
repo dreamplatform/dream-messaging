@@ -1,0 +1,16 @@
+syntax: glob
+
+*.pyc
+parts
+eggs
+bin
+develop-eggs
+downloads
+build
+dist
+*.egg-info
+.installed.cfg
+project/database.db
+staticroot
+.sass-cache
+

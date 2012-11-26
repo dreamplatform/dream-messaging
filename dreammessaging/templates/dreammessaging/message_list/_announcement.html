@@ -1,0 +1,16 @@
+<div class="message">
+
+  <div class="wrapper clearfix">
+    <div class="timestamp">{% if full_timestamp %}{{ obj.timestamp|date:"j.n.Y, G:i" }}{% else %}{{ obj.timestamp|date:"G:i" }}{% endif %}</div>
+    <div class="type"><img src="{{ STATIC_URL }}dreammessaging/img/icon-announcement-message.png" alt="" /></div>
+    <div class="sender">{{ obj.from_user.first_name }} {{ obj.from_user.last_name }}</div>
+    <div class="recipient">
+      <div class="icon"><img src="{{ STATIC_URL }}dreammessaging/img/icon-announcement-message-recipient.png" alt="" /></div>
+      <div class="text">{{ obj.role }}</div>
+    </div>
+    <div class="content"><div>{{ obj.body|linebreaks }}</div></div>
+  </div><!-- /.wrapper-->
+
+  <a class="link js-open-message" href="/message/{{ obj.id }}/"></a>
+
+</div><!-- /.message -->

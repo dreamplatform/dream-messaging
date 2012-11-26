@@ -1,0 +1,55 @@
+{% extends 'dreammessaging/message_send_base.html' %}
+{% load i18n %}
+
+{% block content %}
+<form method="post" action="">
+  {% csrf_token %}
+
+  <div id="header">
+    <div class="wrap">
+      <div class="icon"></div>
+      <h1 class="title">{% trans "Send message" %}</h1>
+    </div>
+    <a class="back-link" href="{% url dreammessaging.to %}"><span></span></a>
+  </div>
+
+  <div id="content">
+    <div class="basic-form">
+
+      <div class="form-description">{% trans "Compose your message below and click send. The message will be sent to the following recipient." %}</div>
+
+      <div class="field disabled">
+        <label>{% trans "Recipient" %}</label>
+        <input type="text" disabled="disabled" value="{{ group }}" />
+      </div>
+
+      {% for field in form %}
+        {% if field.is_hidden %}
+          {{ field }}
+        {% else %}
+        <div class="field {% if field.errors %}error{% endif %}">
+          {{ field.label_tag }}
+          {{ field }}
+          <div class="field-errors">{% for error in field.errors %}{{ error }} {% endfor %}</div>
+        </div>
+        {% endif %}
+      {% endfor %}
+
+    </div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-container clearfix">
+
+      <input type="submit" name="send" value="{% trans 'Send' %}" class="button-1" />
+
+      <div class="copyright">
+        <p class="row">{% trans '#copyright' %}</p>
+        <p class="row">{% trans 'Made by Haltu Oy' %}</p>
+      </div>
+
+    </div>
+  </div>
+
+</form>
+{% endblock %}

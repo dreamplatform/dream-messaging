@@ -1,0 +1,39 @@
+{% load i18n %}
+<div class="full-message">
+
+  <div class="header">
+    <div class="header-container clearfix">
+
+      <div class="timestamp">{{ object.timestamp|date:"j.n.Y, G:i" }}</div>
+
+      {% if object.role %}
+        <div class="type"><img src="{{ STATIC_URL }}dreammessaging/img/icon-announcement-message.png" alt="" title="{% trans 'Announcement' %}" /></div>
+      {% elif obj.group %}
+        <div class="type"><img src="{{ STATIC_URL }}dreammessaging/img/icon-group-message.png" alt="" title="{% trans 'Group Message' %}" /></div>
+      {% else %}
+        <div class="type"><img src="{{ STATIC_URL }}dreammessaging/img/icon-user-message.png" alt="" title="{% trans 'User Message' %}" /></div>
+      {% endif %}
+
+      <div class="sender">{{ object.from_user.first_name }} {{ object.from_user.last_name }}</div>
+
+      <div class="recipient">
+        {% if object.role %}
+          <div class="icon"><img src="{{ STATIC_URL }}dreammessaging/img/icon-announcement-message-recipient.png" alt="" /></div>
+          <div class="text">{{ object.role }}</div>
+        {% elif object.group %}
+          <div class="icon"><img src="{{ STATIC_URL }}dreammessaging/img/icon-group-message-recipient.png" alt="" /></div>
+          <a class="text" href="{% url dreammessaging.list_group object.group.id %}">{{ object.group }}</a>
+        {% else %}
+          <div class="icon"><img src="{{ STATIC_URL }}dreammessaging/img/icon-user-message-recipient.png" alt="" /></div>
+          <div class="text">{{ object.to_user.all.0.first_name }} {{ object.to_user.all.0.last_name }}</div>
+        {% endif %}
+      </div>
+
+    </div><!-- /.header-container -->
+  </div><!-- /.header -->
+
+  <div class="content">
+    <div class="content-container">{{ object.body|linebreaks }}</div>
+  </div>
+
+</div><!-- /.full-message -->
